@@ -1,2 +1,2 @@
-# i3config
-my aesthetic i3config
+# My dotfiles
+my aesthetic arch config
