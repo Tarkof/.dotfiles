@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+scrot screenlock.png -e 'mv screenlock.png /tmp'
+\i3lock -i /tmp/screenlock.png

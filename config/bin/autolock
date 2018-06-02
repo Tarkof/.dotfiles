@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+xautolock -time 1 -locker 'bash /.bin/_autolock'
