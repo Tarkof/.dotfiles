@@ -1,2 +1,3 @@
 # My dotfiles
-my aesthetic arch config
+aesthetic arch config
+
