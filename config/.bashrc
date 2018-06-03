@@ -1,3 +1,4 @@
+
 alias ls="ls -h --color=auto" # allows folders and specific files to be colored
 export PS1='\[\033[01;32m\]\u@\h \[\033[00;31m\]\W \$ \[\033[00m\]' # colors the prompt
 

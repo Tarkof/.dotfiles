@@ -1,0 +1,50 @@
+#!/bin/bash
+
+path=$(pwd)
+cd $path/config
+
+# Exports all dotfiles to ~/
+fun_export(){
+    for file in .??*; do
+        if [[ -d ${file} ]]; then
+            cp -vr ${file}/* /home/tarkof/${file}/
+        else
+            cp -vr ${file} /home/tarkof/${file}
+        fi
+    done
+}
+
+# Import from ~/ all dotfile that are already present in the repository
+fun_import(){
+    for file in .??*; do
+        if [[ -d ${file} ]]; then
+            cd $path/config/${file}
+            for subfile in *; do
+                if [[ -d ${subfile} ]]; then
+                    cp -vr /home/tarkof/${file}/${subfile}/* ${subfile}/
+                else
+                    cp -vr /home/tarkof/${file}/${subfile} ./
+                fi
+            done
+            cd ..
+        else
+            cp -vr /home/tarkof/${file} ./
+        fi
+    done
+}
+
+if [[ -n ${1} ]]; then
+    if [ '-exp' == ${1} ]; then
+        fun_export
+    elif [ '-imp' == ${1} ]; then
+        fun_import
+    else
+        echo "config-sync: invalid option -- '${1}'"
+        echo "Try 'config-sync [-imp|-exp]'."
+    fi
+else
+    echo bash update: bad usage
+    echo "Try 'config-sync [-imp|-exp]'."
+fi
+
+
